@@ -8,6 +8,10 @@ export function ProductCard({ product, background = "cyan", ...restProps }) {
         return name;
     }
 
+    function eventHandler(product) {
+        alert(`you clicked ${product.name} the price is $${product.price}`);
+    }
+
     // const style = {
     //     border: "1px solid white",
     //     borderRadius: "10px",
@@ -32,7 +36,7 @@ export function ProductCard({ product, background = "cyan", ...restProps }) {
             <h2>{productChecker(product.name)}</h2>
             <p>{product.specs[0]}</p>
             <p>{product.price}</p>
-            <button>Add to Cart</button>
+            <button onClick={() => eventHandler(product)}>Add to Cart</button>
         </div>
     );
 }
