@@ -1,7 +1,7 @@
 
 
 
-export function ProductCard(props) {
+export function ProductCard({ product, background = "cyan", ...restProps }) {
 
 
     function productChecker(name) {
@@ -20,7 +20,7 @@ export function ProductCard(props) {
     return (
         <div className="product-card"
             style={{
-
+                background,
                 border: "1px solid white",
                 borderRadius: "10px",
                 padding: "10px",
@@ -28,10 +28,10 @@ export function ProductCard(props) {
                 textAlign: "center"
 
             }}>
-            <img src={props.product.imageSrc} alt="Product" className='product-image' />
-            <h2>{productChecker(props.product.name)}</h2>
-            <p>{props.product.specs[0]}</p>
-            <p>{props.product.price}</p>
+            <img src={product.imageSrc} alt="Product" className='product-image' style={{ ...restProps }} />
+            <h2>{productChecker(product.name)}</h2>
+            <p>{product.specs[0]}</p>
+            <p>{product.price}</p>
             <button>Add to Cart</button>
         </div>
     );

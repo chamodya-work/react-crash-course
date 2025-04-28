@@ -15,10 +15,10 @@ function App() {
   return (
     <div className="App">
       <ProductList>
-        <ProductCard product={product} />
-        <ProductCard product={product} />
-        <ProductCard product={product} />
-        <ProductCard product={product} />
+        <ProductCard product={product} background="green" width="80px" height="80px" />
+        <ProductCard product={product} background="yellow" width="90px" height="90px" />
+        <ProductCard product={product} width="60px" height="60px" />
+        <ProductCard product={product} background="red" width="100px" height="100px" />
       </ProductList>
     </div>
   );
