@@ -1,16 +1,14 @@
 
 
 
-export function ProductCard({ product, background = "cyan", ...restProps }) {
+export function ProductCard({ product, background = "cyan", clickEvent, ...restProps }) {
 
 
     function productChecker(name) {
         return name;
     }
 
-    function eventHandler(product) {
-        alert(`you clicked ${product.name} the price is $${product.price}`);
-    }
+
 
     // const style = {
     //     border: "1px solid white",
@@ -29,14 +27,15 @@ export function ProductCard({ product, background = "cyan", ...restProps }) {
                 borderRadius: "10px",
                 padding: "10px",
                 width: "100%",
-                textAlign: "center"
+                textAlign: "center",
+                color: "black"
 
             }}>
             <img src={product.imageSrc} alt="Product" className='product-image' style={{ ...restProps }} />
             <h2>{productChecker(product.name)}</h2>
             <p>{product.specs[0]}</p>
-            <p>{product.price}</p>
-            <button onClick={() => eventHandler(product)}>Add to Cart</button>
+            <p>${product.price}</p>
+            <button onClick={() => clickEvent(product)}>Add to Cart</button>
         </div>
     );
 }
