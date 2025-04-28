@@ -1,14 +1,8 @@
 
 
 
-export function ProductCard() {
+export function ProductCard(props) {
 
-    const product = {
-        imageSrc: "/images/iphone-5.png",
-        name: "prodct name",
-        specs: ["long battery life", "great camera", "fast processor"],
-        price: 100
-    };
 
     function productChecker(name) {
         return name;
@@ -33,10 +27,10 @@ export function ProductCard() {
                 textAlign: "center"
 
             }}>
-            <img src={product.imageSrc} alt="Product" className='product-image' />
-            <h2>{productChecker(product.name)}</h2>
-            <p>{product.specs[0]}</p>
-            <p>{product.price}</p>
+            <img src={props.product.imageSrc} alt="Product" className='product-image' />
+            <h2>{productChecker(props.product.name)}</h2>
+            <p>{props.product.specs[0]}</p>
+            <p>{props.product.price}</p>
             <button>Add to Cart</button>
         </div>
     );
