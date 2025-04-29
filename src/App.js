@@ -39,7 +39,9 @@ function App() {
   return (
     <div className="App">
       <ProductList>
-        {products.map(product => <ProductCard product={product} clickEvent={eventHandler} />)}
+        {products.map(product =>
+          <ProductCard key={product.name} product={product} clickEvent={eventHandler} />
+        )}
 
         {/* above use map function to iterate over the products array and create a ProductCard for each product */}
         {/* <ProductCard product={products[0]} clickEvent={eventHandler} />
@@ -47,8 +49,19 @@ function App() {
         <ProductCard product={products[2]} clickEvent={eventHandler} />
         <ProductCard product={products[3]} clickEvent={eventHandler} /> */}
       </ProductList>
+
+      <h2>products which cost upto $1200</h2>
+      <ul>
+        {products
+          .filter(({ price }) => price < 1200)
+          .map(({ name, price }) =>
+            <li key={name}>
+              {name} cost ${price}
+            </li>)}
+      </ul>
+
     </div>
   );
 }
 
-export default App;
+export default App; 
