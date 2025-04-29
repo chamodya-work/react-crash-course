@@ -1,7 +1,7 @@
 
 
 
-export function ProductCard({ product, background = "cyan", clickEvent, ...restProps }) {
+export function ProductCard({ product, background = "cyan", clickEvent }) {
 
 
     function productChecker(name) {
@@ -31,7 +31,7 @@ export function ProductCard({ product, background = "cyan", clickEvent, ...restP
                 color: "black"
 
             }}>
-            <img src={product.imageSrc} alt="Product" className='product-image' style={{ ...restProps }} />
+            <img src={product.imageSrc} alt="Product" className='product-image' width={100} height={200} />
             <h2>{productChecker(product.name)}</h2>
             <p>{product.specs[0]}</p>
             <p>${product.price}</p>

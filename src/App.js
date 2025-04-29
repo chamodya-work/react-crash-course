@@ -25,7 +25,7 @@ function App() {
     },
     {
       imageSrc: "/images/macbook.png",
-      name: "OnePlus 12",
+      name: "Apple M06 laptop",
       specs: ["Fast charging", "Smooth AMOLED display", "Snapdragon 8 Gen 3"],
       price: 899
     }
@@ -39,10 +39,13 @@ function App() {
   return (
     <div className="App">
       <ProductList>
-        <ProductCard product={products[0]} background="lightblue" width="80px" height="80px" clickEvent={eventHandler} />
-        <ProductCard product={products[1]} background="lavender" width="90px" height="90px" clickEvent={eventHandler} />
-        <ProductCard product={products[2]} background="mistyrose" width="60px" height="60px" clickEvent={eventHandler} />
-        <ProductCard product={products[3]} background="peachpuff" width="100px" height="100px" clickEvent={eventHandler} />
+        {products.map(product => <ProductCard product={product} clickEvent={eventHandler} />)}
+
+        {/* above use map function to iterate over the products array and create a ProductCard for each product */}
+        {/* <ProductCard product={products[0]} clickEvent={eventHandler} />
+        <ProductCard product={products[1]} clickEvent={eventHandler} />
+        <ProductCard product={products[2]} clickEvent={eventHandler} />
+        <ProductCard product={products[3]} clickEvent={eventHandler} /> */}
       </ProductList>
     </div>
   );
