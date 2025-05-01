@@ -1,4 +1,4 @@
-import './ProductCard.css';
+import styles from './ProductCard.module.css';
 
 export function ProductCard({ product, background = "yellow", clickEvent }) {
 
@@ -20,7 +20,7 @@ export function ProductCard({ product, background = "yellow", clickEvent }) {
 
     return (
 
-        <div className="container" style={{ background: "yellow" }}>
+        <div className={styles.container} style={{ background: "yellow" }}>
             <img src={product.imageSrc} alt="Product" className='product-image' width={100} height={200} />
             <h2>{productChecker(product.name)}</h2>
             <p>{product.specs[0]}</p>
@@ -35,8 +35,8 @@ export function ProductCard({ product, background = "yellow", clickEvent }) {
 }
 
 function Status({ stockCount }) {
-    const notAvailableTemplate = <p className='availableTemplate'>Not available</p>;
-    const availableTemplate = <p className='notAvailableTemplate'> {stockCount} items available</p>;
+    const notAvailableTemplate = <p className={styles.availableTemplate}>Not available</p>;
+    const availableTemplate = <p className={styles.notAvailableTemplate}> {stockCount} items available</p>;
 
     return (
         stockCount === 0 ? notAvailableTemplate : availableTemplate
