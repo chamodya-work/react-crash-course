@@ -1,7 +1,7 @@
 
 
 
-export function ProductCard({ product, background = "cyan", clickEvent }) {
+export function ProductCard({ product, background = "yellow", clickEvent }) {
 
 
     function productChecker(name) {
@@ -37,7 +37,10 @@ export function ProductCard({ product, background = "cyan", clickEvent }) {
             <p>{product.specs[0]}</p>
             <p>${product.price}</p>
             <Status stockCount={product.stockCount} />
-            <button onClick={() => clickEvent(product)}>Add to Cart</button>
+            {product.stockCount > 0 && (< button onClick={() => clickEvent(product)}>Add to Cart</button>)}
+
+
+
         </div>
     );
 
@@ -45,10 +48,12 @@ export function ProductCard({ product, background = "cyan", clickEvent }) {
 }
 
 function Status({ stockCount }) {
-    if (stockCount === 0) {
-        return <p>Not available</p>
-    }
-    return <p> {stockCount} items available</p>
+    const notAvailableTemplate = <p style={{ fontSize: "20px", color: "red" }}>Not available</p>;
+    const availableTemplate = <p style={{ fontSize: "20px", color: "green" }}> {stockCount} items available</p>;
+
+    return (
+        stockCount === 0 ? notAvailableTemplate : availableTemplate
+    );
 
 }
 
