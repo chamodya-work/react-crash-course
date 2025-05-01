@@ -20,6 +20,7 @@ export function ProductCard({ product, background = "cyan", clickEvent }) {
     // }
 
     return (
+
         <div className="product-card"
             style={{
                 background,

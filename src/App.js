@@ -1,6 +1,7 @@
 import './App.css';
 import { ProductCard } from './components/ProductCard';
 import { ProductList } from './components/ProductList';
+import { Fragment } from 'react';
 
 function App() {
 
@@ -37,6 +38,7 @@ function App() {
 
 
   return (
+
     <div className="App">
       <ProductList>
         {products.map(product =>
@@ -51,16 +53,19 @@ function App() {
       </ProductList>
 
       <h2>products which cost upto $1200</h2>
-      <ul>
-        {products
-          .filter(({ price }) => price < 1200)
-          .map(({ name, price }) =>
-            <li key={name}>
-              {name} cost ${price}
-            </li>)}
-      </ul>
 
+      {products
+        .filter(({ price }) => price < 1200)
+        .map(({ name, price }) => (
+          <Fragment key={name}>
+            <hr />
+            <p key={name}>
+              {name} cost ${price}
+            </p>
+          </Fragment>
+        ))}
     </div>
+
   );
 }
 
