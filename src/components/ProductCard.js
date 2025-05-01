@@ -40,11 +40,15 @@ export function ProductCard({ product, background = "cyan", clickEvent }) {
             <button onClick={() => clickEvent(product)}>Add to Cart</button>
         </div>
     );
+
+
 }
 
 function Status({ stockCount }) {
     if (stockCount === 0) {
-        return <p>Not available</p>;
+        return <p>Not available</p>
     }
-    return <p>{stockCount} itmes available</p>;
+    return <p> {stockCount} items available</p>
+
 }
+
