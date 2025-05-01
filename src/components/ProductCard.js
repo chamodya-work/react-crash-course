@@ -36,7 +36,15 @@ export function ProductCard({ product, background = "cyan", clickEvent }) {
             <h2>{productChecker(product.name)}</h2>
             <p>{product.specs[0]}</p>
             <p>${product.price}</p>
+            <Status stockCount={product.stockCount} />
             <button onClick={() => clickEvent(product)}>Add to Cart</button>
         </div>
     );
+}
+
+function Status({ stockCount }) {
+    if (stockCount === 0) {
+        return <p>Not available</p>;
+    }
+    return <p>{stockCount} itmes available</p>;
 }
