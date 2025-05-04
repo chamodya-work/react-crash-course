@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 export function ProductCard({ product, background = "yellow", clickEvent }) {
 
-    let updatedStockCount = product.stockCount;
+    const [updatedStockCount, setStockCount] = useState(product.stockCount);
 
     function handleClick() {
         updatedStockCount = updatedStockCount - 1;
