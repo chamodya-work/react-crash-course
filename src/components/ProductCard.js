@@ -1,4 +1,5 @@
 import styles from './ProductCard.module.css';
+import { useState } from 'react';
 
 export function ProductCard({ product, background = "yellow", clickEvent }) {
 
