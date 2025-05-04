@@ -4,6 +4,13 @@ export function ProductCard({ product, background = "yellow", clickEvent }) {
 
     let updatedStockCount = product.stockCount;
 
+    function handleClick() {
+        updatedStockCount = updatedStockCount - 1;
+        clickEvent(product);
+        console.log('updatedStockCount', updatedStockCount);
+    }
+
+
 
     function productChecker(name) {
         return name;
@@ -27,8 +34,8 @@ export function ProductCard({ product, background = "yellow", clickEvent }) {
             <h2>{productChecker(product.name)}</h2>
             <p>{product.specs[0]}</p>
             <p>${product.price}</p>
-            <Status stockCount={product.stockCount} />
-            {product.stockCount > 0 && (< button onClick={() => clickEvent(product)}>Add to Cart</button>)}
+            <Status stockCount={updatedStockCount} />
+            {updatedStockCount > 0 && (< button onClick={handleClick}>Add to Cart</button>)}
 
         </div>
     );
