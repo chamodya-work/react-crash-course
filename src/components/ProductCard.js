@@ -2,6 +2,8 @@ import styles from './ProductCard.module.css';
 
 export function ProductCard({ product, background = "yellow", clickEvent }) {
 
+    let updatedStockCount = product.stockCount;
+
 
     function productChecker(name) {
         return name;
