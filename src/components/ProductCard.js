@@ -7,7 +7,7 @@ export function ProductCard({ product, background = "yellow", clickEvent }) {
     function handleClick() {
         updatedStockCount = updatedStockCount - 1;
         clickEvent(product);
-        console.log(updatedStockCount);
+        console.log('updatedStockCount', updatedStockCount);
     }
 
 
