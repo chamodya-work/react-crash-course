@@ -6,9 +6,9 @@ export function ProductCard({ product, background = "yellow", clickEvent }) {
     const [updatedStockCount, setStockCount] = useState(product.stockCount);
 
     function handleClick() {
+        setStockCount(updatedStockCount - 1);
         updatedStockCount = updatedStockCount - 1;
         clickEvent(product);
-        console.log('updatedStockCount', updatedStockCount);
     }
 
 
