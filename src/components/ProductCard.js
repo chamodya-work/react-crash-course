@@ -7,7 +7,6 @@ export function ProductCard({ product, background = "yellow", clickEvent }) {
 
     function handleClick() {
         setStockCount(updatedStockCount - 1);
-        updatedStockCount = updatedStockCount - 1;
         clickEvent(product);
     }
 
