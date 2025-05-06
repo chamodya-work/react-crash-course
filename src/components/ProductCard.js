@@ -1,9 +1,11 @@
 import styles from './ProductCard.module.css';
-import { useState } from 'react';
+import { use, useState } from 'react';
 
 export function ProductCard({ product, background = "yellow", clickEvent }) {
 
     const [updatedStockCount, setStockCount] = useState(product.stockCount);
+    const [showMore, setShowMore] = useState(false);
+
     function handleClick() {
         setStockCount(updatedStockCount - 1);
         clickEvent(product);
@@ -31,8 +33,15 @@ export function ProductCard({ product, background = "yellow", clickEvent }) {
         <div className={styles.container} style={{ background: "yellow" }}>
             <img src={product.imageSrc} alt="Product" className='product-image' width={100} height={200} />
             <h2>{productChecker(product.name)}</h2>
-            <p>{product.specs[0]}</p>
-            <p>${product.price}</p>
+            <p><b>SPECIFICATION </b><button onClick={() => setShowMore(!showMore)}>{showMore ? "show" : "hide"}</button></p>
+
+            {!showMore &&
+                <div>
+                    <p>{product.specs[0]}</p>
+                    <p>${product.price}</p>
+                </div>
+            }
+
             <Status stockCount={updatedStockCount} />
             {updatedStockCount > 0 && (< button onClick={handleClick}>Add to Cart</button>)}
 
