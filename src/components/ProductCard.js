@@ -7,12 +7,12 @@ export function ProductCard({ product, background = "yellow", clickEvent }) {
     const [showMore, setShowMore] = useState(false);
 
     function handleClick() {
-        setStockCount(updatedStockCount - 1);
+        setStockCount(prevUpdateCount => prevUpdateCount - 1);//callBack function use for safer
         clickEvent(product);
     }
     function handleTwoClick() {
-        setStockCount(updatedStockCount - 1);
-        setStockCount(updatedStockCount - 1);
+        setStockCount(prevStockCount => prevStockCount - 1);
+        setStockCount(prevStockCount => prevStockCount - 1);//callback function
 
     }
 
