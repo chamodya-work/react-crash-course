@@ -1,7 +1,9 @@
 import './App.css';
 import { ProductCard } from './components/ProductCard';
 import { ProductList } from './components/ProductList';
-import { Fragment } from 'react';
+import { ProductFilter } from './components/ProductFilter';
+import { Fragment, useState } from 'react';
+
 
 function App() {
 
@@ -35,6 +37,10 @@ function App() {
       stockCount: 1
     }
   ];
+  const [filters, setFilters] = useState({
+    minPrice: 0,
+    maxPrice: 1000
+  });
 
   function eventHandler(product) {
     alert(`you clicked ${product.name} the price is $${product.price}`);
@@ -49,14 +55,15 @@ function App() {
           <ProductCard key={product.name} product={product} clickEvent={eventHandler} />
         )}
 
-        {/* above use map function to iterate over the products array and create a ProductCard for each product */}
+        {/* above use map function to iterate over the products array and create a ProductCard for each product  */}
         {/* <ProductCard product={products[0]} clickEvent={eventHandler} />
         <ProductCard product={products[1]} clickEvent={eventHandler} />
         <ProductCard product={products[2]} clickEvent={eventHandler} />
         <ProductCard product={products[3]} clickEvent={eventHandler} /> */}
       </ProductList>
 
-      <h2>products which cost upto $1200</h2>
+      <h2>products filtered by price</h2>
+      <ProductFilter filter={filters} />
 
       {products
         .filter(({ price }) => price < 1200)
@@ -68,6 +75,7 @@ function App() {
             </p>
           </Fragment>
         ))}
+
     </div>
 
   );
