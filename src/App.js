@@ -38,8 +38,11 @@ function App() {
     }
   ];
   const [filters, setFilters] = useState({
-    minPrice: 0,
-    maxPrice: 1000
+    price: {
+      min: 0,
+      max: 1000
+    },
+    other: "other filter"
   });
 
   function eventHandler(product) {
@@ -48,7 +51,10 @@ function App() {
   function handleFilter(key, value) {
     setFilters((prevFilter) => ({
       ...prevFilter,
-      [key]: value
+      price: {
+        ...prevFilter.price,
+        [key]: value
+      }
     }));
   }
 
@@ -72,7 +78,7 @@ function App() {
       <ProductFilter filter={filters} onFilter={handleFilter} />
 
       {products
-        .filter(({ price }) => (price <= filters.maxPrice && price >= filters.minPrice))
+        .filter(({ price }) => (price <= filters.price.max && price >= filters.price.min))
         .map(({ name, price }) => (
           <Fragment key={name}>
             <hr />
