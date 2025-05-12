@@ -10,6 +10,11 @@ export function ProductCard({ product, background = "yellow", clickEvent }) {
         setStockCount(updatedStockCount - 1);
         clickEvent(product);
     }
+    function handleTwoClick() {
+        setStockCount(updatedStockCount - 1);
+        setStockCount(updatedStockCount - 1);
+
+    }
 
 
 
@@ -44,6 +49,7 @@ export function ProductCard({ product, background = "yellow", clickEvent }) {
 
             <Status stockCount={updatedStockCount} />
             {updatedStockCount > 0 && (< button onClick={handleClick}>Add to Cart</button>)}
+            {updatedStockCount > 1 && (<button onClick={handleTwoClick}>Add two items</button>)}
 
         </div>
     );
@@ -57,6 +63,7 @@ function Status({ stockCount }) {
 
     return (
         stockCount === 0 ? notAvailableTemplate : availableTemplate
+
     );
 
 }
