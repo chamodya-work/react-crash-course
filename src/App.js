@@ -45,6 +45,12 @@ function App() {
   function eventHandler(product) {
     alert(`you clicked ${product.name} the price is $${product.price}`);
   }
+  function handleFilter(key, value) {
+    setFilters((prevFilter) => ({
+      ...prevFilter,
+      [key]: value
+    }));
+  }
 
 
   return (
@@ -63,10 +69,10 @@ function App() {
       </ProductList>
 
       <h2>products filtered by price</h2>
-      <ProductFilter filter={filters} />
+      <ProductFilter filter={filters} onFilter={handleFilter} />
 
       {products
-        .filter(({ price }) => price < 1200)
+        .filter(({ price }) => (price <= filters.maxPrice && price >= filters.minPrice))
         .map(({ name, price }) => (
           <Fragment key={name}>
             <hr />
