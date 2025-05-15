@@ -35,7 +35,8 @@ export function ProductCard({ product, background = "yellow", clickEvent }) {
 
     return (
 
-        <div className={styles.container} style={{ background: "yellow" }}>
+        <div className={styles.container} style={{ background: "white" }}>
+            <button className={styles.fav}>🤍</button>
             <img src={product.imageSrc} alt="Product" className='product-image' width={100} height={200} />
             <h2>{productChecker(product.name)}</h2>
             <p><b>SPECIFICATION </b><button className={styles.specButton} onClick={() => setShowMore(!showMore)}>{showMore ? "show" : "hide"}</button></p>
