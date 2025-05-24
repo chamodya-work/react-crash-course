@@ -1,7 +1,7 @@
 import styles from './ProductCard.module.css';
 import { use, useState } from 'react';
 
-export function ProductCard({ product, background = "yellow", clickEvent }) {
+export function ProductCard({ product, background = "yellow", clickEvent, onFavorite }) {
 
     const [updatedStockCount, setStockCount] = useState(product.stockCount);
     const [showMore, setShowMore] = useState(false);
@@ -36,7 +36,7 @@ export function ProductCard({ product, background = "yellow", clickEvent }) {
     return (
 
         <div className={styles.container} style={{ background: "white" }}>
-            <button className={styles.fav}>🤍</button>
+            <button className={styles.fav} onClick={() => onFavorite(product.id)}>🤍</button>
             <img src={product.imageSrc} alt="Product" className='product-image' width={100} height={200} />
             <h2>{productChecker(product.name)}</h2>
             <p><b>SPECIFICATION </b><button className={styles.specButton} onClick={() => setShowMore(!showMore)}>{showMore ? "show" : "hide"}</button></p>

@@ -9,6 +9,7 @@ function App() {
 
   const products = [
     {
+      id: 1,
       imageSrc: "/images/iphone-5.png",
       name: "iPhone 16 Pro Max",
       specs: ["Long battery life", "Excellent camera", "A18 Pro chip"],
@@ -16,6 +17,7 @@ function App() {
       stockCount: 5
     },
     {
+      id: 2,
       imageSrc: "images/apple-tv.png",
       name: "Samsung Galaxy S24 Ultra",
       specs: ["200MP camera", "S Pen included", "Snapdragon 8 Gen 3"],
@@ -23,6 +25,7 @@ function App() {
       stockCount: 3
     },
     {
+      id: 3,
       imageSrc: "/images/apple-watch.png",
       name: "Google Pixel 9 Pro",
       specs: ["Pure Android experience", "Tensor G3 chip", "Outstanding photography"],
@@ -30,6 +33,7 @@ function App() {
       stockCount: 0
     },
     {
+      id: 4,
       imageSrc: "/images/macbook.png",
       name: "Apple M06 laptop",
       specs: ["Fast charging", "Smooth AMOLED display", "Snapdragon 8 Gen 3"],
@@ -45,9 +49,12 @@ function App() {
     other: "other filter"
   });
 
+  const [favorites, setFavorites] = useState([]);
+
   function eventHandler(product) {
     alert(`you clicked ${product.name} the price is $${product.price}`);
   }
+
   function handleFilter(key, value) {
     setFilters((prevFilter) => ({
       ...prevFilter,
@@ -58,13 +65,22 @@ function App() {
     }));
   }
 
+  function handlefavorite(productId) {
+    if (favorites.includes(productId)) {
+      //remove it
+      setFavorites((prevFavorites) => prevFavorites.filter(id => id !== productId));
+    } else {
+      // add it
+      setFavorites((prevFavorites) => [...prevFavorites, productId]);
+    }
+  }
 
   return (
 
     <div className="App">
       <ProductList>
         {products.map(product =>
-          <ProductCard key={product.name} product={product} clickEvent={eventHandler} />
+          <ProductCard key={product.name} product={product} clickEvent={eventHandler} onFavorite={handlefavorite} />
         )}
 
         {/* above use map function to iterate over the products array and create a ProductCard for each product  */}
