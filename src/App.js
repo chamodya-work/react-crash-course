@@ -80,7 +80,7 @@ function App() {
     <div className="App">
       <ProductList>
         {products.map(product =>
-          <ProductCard key={product.name} product={product} clickEvent={eventHandler} onFavorite={handlefavorite} />
+          <ProductCard key={product.name} product={product} isfavorite={favorites.includes(product.id)} clickEvent={eventHandler} onFavorite={handlefavorite} />
         )}
 
         {/* above use map function to iterate over the products array and create a ProductCard for each product  */}

@@ -15,7 +15,6 @@
     background: none;
     font-size: 20px;
     cursor: pointer;
-    background-color: tomato;
     border-radius: 10px;
 
     &:hover {
