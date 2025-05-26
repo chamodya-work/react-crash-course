@@ -20,8 +20,8 @@ function App() {
 
   const [favorites, setFavorites] = useState([]);
 
-  function eventHandler(product) {
-    alert(`you clicked ${product.name} the price is $${product.price}`);
+  function eventHandler(productId, stockCount) {
+    setProducts((prevProducts) => prevProducts.map((product) => product.id === productId ? { ...product, stockCount } : product))
   }
 
   function handleFilter(key, value) {
