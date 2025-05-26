@@ -3,16 +3,15 @@ import { use, useState } from 'react';
 
 export function ProductCard({ product, background = "yellow", clickEvent, onFavorite, isfavorite }) {
 
-    const [updatedStockCount, setStockCount] = useState(product.stockCount);
     const [showMore, setShowMore] = useState(false);
 
     function handleClick() {
-        setStockCount((prevStockCount) => prevStockCount - 1);//callBack function use for safer
+        // setStockCount((prevStockCount) => prevStockCount - 1);//callBack function use for safer
         clickEvent(product);
     }
     function handleTwoClick() {
-        setStockCount((prevStockCount) => prevStockCount - 1);
-        setStockCount((prevStockCount) => prevStockCount - 1);//callback function
+        // setStockCount((prevStockCount) => prevStockCount - 1);
+        // setStockCount((prevStockCount) => prevStockCount - 1);//callback function
 
     }
 
@@ -53,9 +52,9 @@ export function ProductCard({ product, background = "yellow", clickEvent, onFavo
                 </div>
             }
 
-            <Status stockCount={updatedStockCount} />
-            {updatedStockCount > 0 && (< button onClick={handleClick}>Add to Cart</button>)}
-            {updatedStockCount > 1 && (<button onClick={handleTwoClick}>Add two items</button>)}
+            <Status stockCount={product.stockCount} />
+            {product.stockCount > 0 && (< button onClick={handleClick}>Add to Cart</button>)}
+            {product.stockCount > 1 && (<button onClick={handleTwoClick}>Add two items</button>)}
 
         </div>
     );
